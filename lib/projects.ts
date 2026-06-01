@@ -1,0 +1,49 @@
+/**
+ * 케이스 스터디 데이터. 여기만 채우면 Work 섹션이 자동으로 그려진다.
+ * 첫 카드(Recto)는 weekly-report의 "순환논리 발견 → 정직한 재포지셔닝" 서사를
+ * 그대로 케이스 스터디로 옮길 자리.
+ */
+export type Project = {
+  slug: string;
+  title: string;
+  summary: string;
+  role: string;
+  year: string;
+  tags: string[];
+  href?: string; // 상세 페이지가 있으면 연결, 없으면 비활성
+  accent?: boolean;
+};
+
+export const projects: Project[] = [
+  {
+    slug: "recto-ab",
+    title: "Recto · A/B 예측 도구",
+    summary:
+      "내 검증이 정말 실효성 있나? 시뮬레이션이 순환논리임을 스스로 발견하고, ‘검증’이 아니라 ‘예측’ 도구로 정직하게 재포지셔닝한 과정.",
+    role: "Product Design · 의사결정",
+    year: "2026",
+    tags: ["Product", "의사결정", "리포지셔닝"],
+    href: "/work/recto-ab",
+    accent: true,
+  },
+  {
+    slug: "economic-weather",
+    title: "경제날씨 · 직관적 경제 지표",
+    summary:
+      "지수가 아니라 ‘경제 상황’을 보여주기로. 10년치 데이터로 직접 백테스팅해 검증한 산출식을, 40-50대도 1초에 읽는 날씨로 번역한 프로젝트.",
+    role: "Product Design · 지표 설계",
+    year: "2024",
+    tags: ["Fintech", "데이터", "지표 설계"],
+    href: "/work/economic-weather",
+  },
+  {
+    slug: "loan-compare",
+    title: "대출비교 · 이탈 흐름 개선",
+    summary:
+      "랜딩 53.7% 이탈, ‘왜’는 데이터에 없었다. 가설로 공백을 메워 신뢰 랜딩·부결자 리텐션·4050 친화 입력까지 다시 설계한 프로젝트.",
+    role: "Product Design · 데이터 분석",
+    year: "2023",
+    tags: ["Fintech", "전환", "리텐션"],
+    href: "/work/loan-compare",
+  },
+];

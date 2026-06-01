@@ -1,0 +1,62 @@
+@import "tailwindcss";
+/* Pretendard 폰트는 app/layout.tsx의 <link>로 로드 (Tailwind v4 @import 제약 때문) */
+
+:root {
+  --background: #0a0a0b;
+  --foreground: #ededed;
+  --muted: #8a8a92;
+  --line: rgba(255, 255, 255, 0.1);
+  /* 포인트 컬러 한 곳에서 관리 — 여기만 바꾸면 사이트 전체가 바뀜 */
+  --accent: #d8ff3e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  --font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Lenis가 부드러운 스크롤을 담당하므로 네이티브 smooth는 끔 */
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* 데스크탑에서 커스텀 커서를 쓸 때 기본 커서 숨김 */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button {
+    cursor: none;
+  }
+}
+
+/* 섹션 라벨용 모노 라벨 */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+::selection {
+  background: var(--accent);
+  color: #0a0a0b;
+}
