@@ -32,8 +32,8 @@ jobs:
 
       - name: Build static export
         run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /yxxna-portfolio
+        # 커스텀 도메인(yxxna.co.kr) 루트로 서빙하므로 basePath를 두지 않는다.
+        # (서브경로 배포가 다시 필요하면 NEXT_PUBLIC_BASE_PATH 를 여기서 설정)
 
       - uses: actions/configure-pages@v5
 
