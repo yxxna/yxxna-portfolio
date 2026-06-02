@@ -21,7 +21,7 @@ export const projects: Project[] = [
     summary:
       "내 검증이 정말 실효성 있나? 시뮬레이션이 순환논리임을 스스로 발견하고, ‘검증’이 아니라 ‘예측’ 도구로 정직하게 재포지셔닝한 과정.",
     role: "Product Design · 의사결정",
-    year: "2026",
+    year: "2026.05 - 2026.05",
     tags: ["Product", "의사결정", "리포지셔닝"],
     href: "/work/recto-ab",
     accent: true,
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     summary:
       "지수가 아니라 ‘경제 상황’을 보여주기로. 10년치 데이터로 직접 백테스팅해 검증한 산출식을, 40-50대도 1초에 읽는 날씨로 번역한 프로젝트.",
     role: "Product Design · 지표 설계",
-    year: "2024",
+    year: "2025.06 - 2025.10",
     tags: ["Fintech", "데이터", "지표 설계"],
     href: "/work/economic-weather",
   },
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     summary:
       "랜딩 53.7% 이탈, ‘왜’는 데이터에 없었다. 가설로 공백을 메워 신뢰 랜딩·부결자 리텐션·4050 친화 입력까지 다시 설계한 프로젝트.",
     role: "Product Design · 데이터 분석",
-    year: "2023",
+    year: "2025.02 - 2025. 07",
     tags: ["Fintech", "전환", "리텐션"],
     href: "/work/loan-compare",
   },
