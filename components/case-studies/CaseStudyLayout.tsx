@@ -4,6 +4,9 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import Reveal from "@/components/Reveal";
 import type { CaseStudy, CaseImage } from "@/lib/case-studies";
+// public 에셋의 절대경로(/images/...)에 basePath를 붙인다.
+// GitHub Pages 서브경로 배포에서 일반 <img>는 basePath가 자동 적용되지 않기 때문.
+import { withBasePath } from "@/lib/base-path";
 
 /** 실제 이미지가 있으면 <img>, 없으면 점선 플레이스홀더. */
 function Media({ src, alt, hint, ratio = "4 / 3", label }: CaseImage) {
@@ -13,7 +16,7 @@ function Media({ src, alt, hint, ratio = "4 / 3", label }: CaseImage) {
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={src}
+          src={withBasePath(src)}
           alt={alt ?? hint ?? ""}
           loading="lazy"
           className="w-full rounded-2xl border border-line"
@@ -105,7 +108,7 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={slide.src}
+            src={withBasePath(slide.src)}
             alt={slide.alt}
             loading="lazy"
             className="w-full rounded-2xl border border-line"
