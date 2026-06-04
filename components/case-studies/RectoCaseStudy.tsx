@@ -224,7 +224,7 @@ export default function RectoCaseStudy() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-8 max-w-2xl text-xl text-muted"
+            className="mt-8 text-xl text-muted"
           >
             추측으로 굴러가던 UI 의사결정을 데이터로 바꾸려다, 내 검증이
             순환논리임을 스스로 발견하고 ‘검증’이 아니라 ‘예측’ 도구로 정직하게

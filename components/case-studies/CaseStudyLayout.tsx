@@ -163,7 +163,7 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
 }
 
 export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
-  const { kicker, title, summary, meta, heroImage, sections } = data;
+  const { kicker, title, titleLines, summary, meta, heroImage, sections } = data;
 
   return (
     <main className="flex-1 pt-28">
@@ -192,13 +192,13 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="max-w-4xl pb-2 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-5xl md:text-6xl"
           >
-            <EntryBoxReveal lines={[title]} />
+            <EntryBoxReveal lines={titleLines ?? [title]} />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-8 max-w-2xl text-xl text-muted"
+            className="mt-8 text-xl text-muted"
           >
             {summary}
           </motion.p>

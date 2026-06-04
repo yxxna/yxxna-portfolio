@@ -30,8 +30,9 @@ export type CaseSection = {
 export type CaseStudy = {
   slug: string;
   kicker: string;
-  title: string;
-  accentWord?: string; // 제목 중 포인트색으로 강조할 단어
+  title: string; // 메타/공유용 한 줄 제목
+  titleLines?: string[]; // 헤더 표시용 줄 단위 제목(줄마다 박스 리빌 스태거). 없으면 [title].
+  accentWord?: string; // (미사용) 예전 제목 강조 단어
   summary: string;
   meta: { k: string; v: string }[];
   heroImage?: CaseImage;
@@ -43,11 +44,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "economic-weather",
     kicker: "Case Study · Fintech",
     title: "경제날씨 — 40대도 직관적으로 읽는 경제 지표",
+    titleLines: ["경제날씨 — 40대도 직관적으로 읽는", "경제 지표"],
     accentWord: "경제날씨",
     summary:
       "‘코스피·나스닥을 또 보여주자’는 뻔한 아이디어에서 출발해, 지수가 아니라 ‘경제 상황’을 보여주기로. 10년치 데이터로 직접 백테스팅해 검증한 산출식을 날씨로 번역한 프로젝트.",
     meta: [
-      { k: "역할", v: "기획 · 디자인 · 지표 설계 · 데이터 검증" },
+      { k: "기여도", v: "기획 · 디자인 · 지표 설계 · 데이터 검증 100%" },
       { k: "기간", v: "2025. 06 - 2025. 10" },
       { k: "플랫폼", v: "PASS" },
       { k: "분야", v: "금융 · 데이터 시각화" },
@@ -158,18 +160,18 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         n: "08",
         kicker: "Result & Learning",
-        title: "반응은 좋았다. CTR은 낮았다. 그래서 다음 가설은 이거다.",
+        title: "가설은 맞았다 — 그리고 두 개의 질문이 남았다",
+        stats: [
+          { value: "12.4%", delta: "SKT · 최대", label: "경제날씨 클릭률" },
+          { value: "8.4%", delta: "LGU+ · 최대", label: "느린지표 상세보기 클릭률" },
+          { value: "긍정적", label: "LGU+ PASS 소비자 정성평가 반응" },
+          { value: "긍정적", label: "통신3사 PASS 금융상품·혜택 담당자 반응" },
+        ],
         body: [
-          "통신사 내부 반응은 좋았어요. LG U+ PASS 고객 만족도 정성 평가에서도 긍정적인 피드백을 받았고요.",
-          "하지만 솔직히 CTR은 낮았어요. 인지는 됐지만 행동(클릭)으로는 이어지지 않은 거죠.",
-          "그래서 다음 가설은 분명해요 — 콘텐츠가 아니라 진입점 자체를 바꿔야 한다. 좋은 반응과 낮은 CTR 사이의 간극이, 다음 실험의 출발점이에요.",
+          "가설대로, 사람들은 코스피·코스닥처럼 이미 자주 보는 수치보다 ‘경제날씨’ 같은 새로운 지표에 더 높은 관심을 보였어요.",
+          "결과는 긍정적이었지만 질문이 남았어요. 같은 화면인데 통신사별 클릭률 차이(SKT 12.4% vs LGU+ 8.4%)는 왜 나타났을까. 그리고 클릭 이후 다시 찾아오게 만드는 건 또 다른 설계가 필요한 문제예요. 이 두 가지가 다음 과제예요.",
         ],
-        pull: "좋은 것만 쓴 포트폴리오는 믿지 않는다 — 솔직함이 신뢰를 만든다.",
-        images: [
-          { hint: "정성 평가 인용 (LGU+ PASS)" },
-          { hint: "CTR 수치 (낮아도 명시)", ratio: "16 / 9" },
-          { hint: "다음 가설 한 줄" },
-        ],
+        pull: "좋은 것만 쓴 포트폴리오는 믿지 않는다 — 남은 질문까지 적어야 신뢰가 된다.",
       },
     ],
   },
@@ -178,11 +180,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "loan-compare",
     kicker: "Case Study · Fintech",
     title: "대출비교 개선 — 데이터가 멈춘 곳에서 시작한 디자인",
+    titleLines: ["대출비교 개선 — 데이터가 멈춘 곳에서", " 시작한 디자인"],
     accentWord: "대출비교",
     summary:
       "데이터는 ‘어디서’ 이탈하는지만 알려줬다. ‘왜’는 알 수 없었다. 추가 리서치도 없이, 데이터가 멈춘 자리를 가설로 채워 랜딩·부결·입력 흐름을 다시 설계한 프로젝트.",
     meta: [
-      { k: "역할", v: "제품 디자인 · 데이터 분석" },
+      { k: "기여도", v: "디자인 100% · 데이터 분석 80%" },
       { k: "기간", v: "2025.02 - 2025. 07" },
       { k: "분야", v: "금융 · 대출비교" },
       { k: "포커스", v: "전환 · 리텐션" },
@@ -269,10 +272,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "overrify",
     kicker: "Case Study · Design System",
     title: "Overrify — 핸드오프 병목을 없앤 Figma 플러그인",
+    titleLines: ["Overrify — 핸드오프 병목을 없앤", "Figma 플러그인"],
     summary:
       "지정한 스타일·배리어블 값이 핸드오프에서 조용히 어긋나며 개발이 막혔다. 인스턴스가 어디에 쓰였는지, 어떤 오버라이드가 숨어 있는지를 즉시 추적·복원하는 Figma 플러그인으로 병목 자체를 없앤 과정.",
     meta: [
-      { k: "역할", v: "기획 · 플러그인 개발 · 디버깅" },
+      { k: "기여도", v: "기획 · 플러그인 개발 · 디버깅 100%" },
       { k: "유형", v: "개인 프로젝트 (100%)" },
       { k: "분야", v: "디자인 시스템 · 핸드오프" },
       { k: "도구", v: "Figma Plugin API · Claude · VS Code" },
