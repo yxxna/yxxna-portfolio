@@ -47,4 +47,17 @@ export const projects: Project[] = [
     tags: ["Figma Plugin", "디자인 시스템", "핸드오프"],
     href: "/works/overrify",
   },
+  // ── 껍데기(준비 중) — 내용은 나중에. href 없으면 리스트에서 "SOON"으로 비활성. ──
+  {
+    slug: "finance-ad-ui",
+    title: "금융광고 UI 개편",
+    summary: "케이스 스터디 준비 중이에요.",
+    tags: ["Product", "금융"],
+  },
+  {
+    slug: "pass-money",
+    title: "PASS머니적립 출시",
+    summary: "케이스 스터디 준비 중이에요.",
+    tags: ["Product", "Fintech"],
+  },
 ];

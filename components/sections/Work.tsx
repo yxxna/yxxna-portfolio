@@ -65,7 +65,7 @@ export default function Work() {
     <section id="work" className="py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <Reveal>
-          <p className="label">Selected Work</p>
+          <p className="label">Works</p>
         </Reveal>
 
         <div className="mt-16">

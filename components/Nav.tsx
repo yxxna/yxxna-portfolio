@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 
 const links = [
@@ -12,6 +13,10 @@ const links = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  // 현재 경로가 해당 메뉴(또는 그 하위, 예: /works/recto-ab)면 활성
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -41,7 +46,12 @@ export default function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="label hover:text-foreground transition-colors"
+                aria-current={isActive(l.href) ? "page" : undefined}
+                className={`label relative transition-colors ${
+                  isActive(l.href)
+                    ? "text-foreground after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:bg-foreground"
+                    : "hover:text-foreground"
+                }`}
               >
                 {l.label}
               </Link>
