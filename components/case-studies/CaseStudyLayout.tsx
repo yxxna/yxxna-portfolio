@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import Reveal from "@/components/Reveal";
+import EntryBoxReveal from "@/components/EntryBoxReveal";
 import type { CaseStudy, CaseImage } from "@/lib/case-studies";
 // public 에셋의 절대경로(/images/...)에 basePath를 붙인다.
 // GitHub Pages 서브경로 배포에서 일반 <img>는 basePath가 자동 적용되지 않기 때문.
@@ -35,7 +36,7 @@ function Media({ src, alt, hint, ratio = "4 / 3", label }: CaseImage) {
 
 function Pull({ children }: { children: React.ReactNode }) {
   return (
-    <p className="my-2 text-2xl font-medium leading-snug tracking-tight text-accent md:text-3xl">
+    <p className="my-2 text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl">
       {children}
     </p>
   );
@@ -44,7 +45,7 @@ function Pull({ children }: { children: React.ReactNode }) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col justify-center rounded-2xl border border-line p-10">
-      <p className="text-6xl font-semibold tracking-tight text-accent md:text-7xl">
+      <p className="text-6xl font-semibold tracking-tight text-foreground md:text-7xl">
         {value}
       </p>
       <p className="mt-3 text-muted">{label}</p>
@@ -73,7 +74,7 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
           {stats.map((s, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div className="h-full bg-background p-8">
-                <p className="text-4xl font-semibold tracking-tight text-accent md:text-5xl">
+                <p className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
                   {s.value}
                 </p>
                 {s.delta && (
@@ -162,18 +163,17 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
 }
 
 export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
-  const { kicker, title, accentWord, summary, meta, heroImage, sections } = data;
-  const titleParts = accentWord ? title.split(accentWord) : [title];
+  const { kicker, title, summary, meta, heroImage, sections } = data;
 
   return (
     <main className="flex-1 pt-28">
-      <div className="mx-auto max-w-[1100px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <Link
-          href="/#work"
+          href="/works"
           data-cursor="BACK"
           className="label inline-block hover:text-foreground"
         >
-          ← Work
+          ← Works
         </Link>
 
         {/* header */}
@@ -192,15 +192,7 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="max-w-4xl pb-2 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-5xl md:text-6xl"
           >
-            {accentWord ? (
-              <>
-                {titleParts[0]}
-                <span className="text-accent">{accentWord}</span>
-                {titleParts[1]}
-              </>
-            ) : (
-              title
-            )}
+            <EntryBoxReveal lines={[title]} />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -239,16 +231,16 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
         {/* footer nav */}
         <div className="flex items-center justify-between border-t border-line py-16">
           <Link
-            href="/#work"
+            href="/works"
             data-cursor="BACK"
             className="label hover:text-foreground"
           >
             ← 모든 작업
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             data-cursor="MAIL"
-            className="text-lg font-medium hover:text-accent"
+            className="text-lg font-medium transition-opacity hover:opacity-60"
           >
             함께 일하고 싶다면 →
           </Link>

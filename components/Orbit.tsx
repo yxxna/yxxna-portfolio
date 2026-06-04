@@ -16,7 +16,7 @@ import {
  * - 노드(역량 키워드)는 모노 라벨과 함께 고정 배치
  * - 마우스에 반응하는 미세한 패럴럭스 + hover 하이라이트
  *
- * 다크 + 라임(--accent) 테마에 맞춰 변환했다. blob 대신 Hero 배경으로 사용.
+ * 라이트 + 라임(--accent) 테마. blob 대신 Hero 배경으로 사용.
  */
 
 const CENTER = 500;
@@ -93,7 +93,7 @@ export default function Orbit() {
                 cy={CENTER}
                 r={r}
                 fill="none"
-                stroke="rgba(255,255,255,0.10)"
+                stroke="rgba(0,0,0,0.12)"
                 strokeWidth={1}
                 strokeDasharray={i % 2 === 0 ? "2 8" : "2 12"}
               />
@@ -106,7 +106,7 @@ export default function Orbit() {
             cy={CENTER}
             r={365}
             fill="none"
-            stroke="rgba(255,255,255,0.06)"
+            stroke="rgba(0,0,0,0.08)"
             strokeWidth={1}
             strokeDasharray="1 14"
             style={SPIN_ORIGIN}
@@ -134,7 +134,7 @@ export default function Orbit() {
                   y1={CENTER}
                   x2={x}
                   y2={y}
-                  stroke={isActive ? "var(--accent)" : "rgba(255,255,255,0.16)"}
+                  stroke={isActive ? "var(--accent)" : "rgba(0,0,0,0.18)"}
                   strokeWidth={isActive ? 1.4 : 1}
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
@@ -148,7 +148,7 @@ export default function Orbit() {
                   width={10}
                   height={10}
                   fill={isActive ? "var(--accent)" : "var(--background)"}
-                  stroke={isActive ? "var(--accent)" : "rgba(255,255,255,0.5)"}
+                  stroke={isActive ? "var(--accent)" : "rgba(0,0,0,0.45)"}
                   strokeWidth={1.2}
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}

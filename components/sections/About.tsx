@@ -48,9 +48,11 @@ export default function About() {
             <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
               {strengths.map((s, i) => (
                 <Reveal key={s.k} delay={i * 0.08}>
-                  <div className="h-full bg-background p-8">
+                  <div className="group h-full bg-background p-8">
                     <p className="label mb-6">{s.k}</p>
-                    <h3 className="text-xl font-semibold">{s.t}</h3>
+                    <h3 className="text-xl font-semibold">
+                      <span className="box-reveal">{s.t}</span>
+                    </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted">
                       {s.d}
                     </p>

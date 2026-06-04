@@ -2,10 +2,11 @@
 /* Pretendard 폰트는 app/layout.tsx의 <link>로 로드 (Tailwind v4 @import 제약 때문) */
 
 :root {
-  --background: #0a0a0b;
-  --foreground: #ededed;
-  --muted: #8a8a92;
-  --line: rgba(255, 255, 255, 0.1);
+  /* 라이트 컨셉 — 어두운 화면 지양 */
+  --background: #fafafa;
+  --foreground: #0a0a0b;
+  --muted: #6b6b73;
+  --line: rgba(0, 0, 0, 0.1);
   /* 포인트 컬러 한 곳에서 관리 — 여기만 바꾸면 사이트 전체가 바뀜 */
   --accent: #d8ff3e;
 }
@@ -54,6 +55,71 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/* 타이틀 호버 인터랙션 — 기본 검은 텍스트, 호버하면 텍스트 뒤에서 검은 박스가
+   왼→오로 차오르며 동시에 네온(accent)으로 전환. 부모에 .group 이 있으면 부모
+   호버에도 반응. (enerblock.net /approach 타이틀 인터랙션 참고) */
+.box-reveal {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  color: var(--foreground);
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.box-reveal::before {
+  content: "";
+  position: absolute;
+  inset: -0.1em -0.25em;
+  z-index: -1;
+  background: var(--foreground);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.box-reveal:hover,
+.group:hover .box-reveal,
+.box-reveal--on {
+  color: var(--accent);
+}
+.box-reveal:hover::before,
+.group:hover .box-reveal::before,
+.box-reveal--on::before {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .box-reveal::before {
+    transition: none;
+  }
+}
+
+/* 리스트 아이템 화살표 — 평소엔 그냥 보이고, 부모(.group) 호버 시 왼→오로 흐른다.
+   오른쪽으로 빠져나가며(페이드) 보이지 않는 사이 왼쪽으로 점프 → 다시 들어와 반복. */
+@keyframes arrow-travel {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  55% {
+    transform: translateX(12px);
+    opacity: 0;
+  }
+  56% {
+    transform: translateX(-12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.group:hover .arrow-travel {
+  animation: arrow-travel 0.9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .arrow-travel {
+    animation: none;
+  }
 }
 
 ::selection {

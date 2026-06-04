@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import Reveal from "@/components/Reveal";
+import EntryBoxReveal from "@/components/EntryBoxReveal";
 
 /* ── 작은 빌딩블록 ─────────────────────────────────────────── */
 
@@ -77,7 +78,7 @@ function ImagePlaceholder({
 function Pull({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
-      <p className="my-2 text-2xl font-medium leading-snug tracking-tight text-accent md:text-3xl">
+      <p className="my-2 text-2xl font-medium leading-snug tracking-tight text-foreground md:text-3xl">
         {children}
       </p>
     </Reveal>
@@ -99,7 +100,7 @@ function CircularLogic() {
       <ol className="space-y-3">
         {steps.map((s, i) => (
           <li key={s.n} className="flex items-start gap-4">
-            <span className="mt-0.5 font-mono text-accent">{s.n}</span>
+            <span className="mt-0.5 font-mono text-foreground">{s.n}</span>
             <div>
               <p className="font-medium">{s.t}</p>
               <p className="text-sm text-muted">{s.d}</p>
@@ -136,13 +137,13 @@ function Positioning() {
             <div
               className="rounded-xl border p-5"
               style={{
-                borderColor: c.on ? "var(--accent)" : "var(--line)",
+                borderColor: c.on ? "var(--foreground)" : "var(--line)",
                 opacity: c.on ? 1 : 0.5,
               }}
             >
               <p
                 className="mb-1 text-sm font-semibold"
-                style={{ color: c.on ? "var(--accent)" : "var(--muted)" }}
+                style={{ color: c.on ? "var(--foreground)" : "var(--muted)" }}
               >
                 {c.t}
               </p>
@@ -189,14 +190,14 @@ const decisions = [
 export default function RectoCaseStudy() {
   return (
     <main className="flex-1 pt-28">
-      <div className="mx-auto max-w-[1100px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         {/* back */}
         <Link
-          href="/#work"
+          href="/works"
           data-cursor="BACK"
           className="label inline-block hover:text-foreground"
         >
-          ← Work
+          ← Works
         </Link>
 
         {/* header */}
@@ -215,9 +216,9 @@ export default function RectoCaseStudy() {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="max-w-4xl pb-2 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-6xl md:text-7xl"
           >
-            Recto — 내가 만든 검증을
-            <br />
-            <span className="text-accent">의심한</span> 데서 시작된 도구
+            <EntryBoxReveal
+              lines={["Recto — 내가 만든 검증을", "의심한 데서 시작된 도구"]}
+            />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -391,7 +392,7 @@ export default function RectoCaseStudy() {
           <ol className="not-prose space-y-5">
             {decisions.map((d, i) => (
               <li key={d.t} className="flex gap-5">
-                <span className="font-mono text-accent">
+                <span className="font-mono text-foreground">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -421,21 +422,21 @@ export default function RectoCaseStudy() {
             문장으로 정리하면 이래요.
           </p>
           <ul className="not-prose space-y-4">
-            <li className="border-l-2 border-accent pl-5">
+            <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
                 예측에 검증의 언어를 빌려 쓰지 않는다.
               </span>{" "}
               입력으로 만든 데이터를 같은 입력으로 검증하는 건 순환이다. ‘우세
               예상’과 ‘유의함’은 다른 단어다.
             </li>
-            <li className="border-l-2 border-accent pl-5">
+            <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
                 한계를 인정하는 게 더 강한 포지션이다.
               </span>{" "}
               못 하는 걸 솔직히 인정하고 “앞뒤를 받쳐준다”로 재포지셔닝하자,
               오히려 데이터에 밝은 청중의 신뢰를 얻었다.
             </li>
-            <li className="border-l-2 border-accent pl-5">
+            <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
                 가장 날카로운 검증은 스스로 거는 검증이다.
               </span>{" "}
@@ -456,13 +457,13 @@ export default function RectoCaseStudy() {
 
         {/* footer nav */}
         <div className="flex items-center justify-between border-t border-line py-16">
-          <Link href="/#work" data-cursor="BACK" className="label hover:text-foreground">
+          <Link href="/works" data-cursor="BACK" className="label hover:text-foreground">
             ← 모든 작업
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             data-cursor="MAIL"
-            className="text-lg font-medium hover:text-accent"
+            className="text-lg font-medium transition-opacity hover:opacity-60"
           >
             함께 일하고 싶다면 →
           </Link>

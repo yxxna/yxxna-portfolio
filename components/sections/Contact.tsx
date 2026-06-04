@@ -11,11 +11,13 @@ export default function Contact() {
           <a
             href="mailto:yxxna.design@gmail.com"
             data-cursor="MAIL"
-            className="block max-w-5xl text-4xl font-semibold leading-tight tracking-tight transition-colors hover:text-accent sm:text-6xl md:text-7xl"
+            className="block max-w-5xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl md:text-7xl"
           >
-            함께 만들 이야기가 있다면,
-            <br />
-            언제든 메일 주세요.
+            <span className="box-reveal">
+              함께 만들 이야기가 있다면,
+              <br />
+              언제든 메일 주세요.
+            </span>
           </a>
 
           <div className="mt-16 flex flex-wrap items-center gap-x-10 gap-y-4">
@@ -26,14 +28,18 @@ export default function Contact() {
               yxxna.design@gmail.com
             </a>
             <a
-              href="#"
+              href="#" // TODO: Tistory 블로그 URL
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="↗"
               className="label hover:text-foreground"
             >
-              Behance
+              Tistory
             </a>
             <a
-              href="#"
+              href="#" // TODO: LinkedIn 프로필 URL
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="↗"
               className="label hover:text-foreground"
             >

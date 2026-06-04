@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 const links = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Works", href: "/works" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Nav() {
@@ -26,24 +27,24 @@ export default function Nav() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed inset-x-0 top-0 z-50 transition-colors duration-500"
       style={{
-        backgroundColor: scrolled ? "rgba(10,10,11,0.6)" : "transparent",
+        backgroundColor: scrolled ? "rgba(250,250,250,0.7)" : "transparent",
         backdropFilter: scrolled ? "blur(10px)" : "none",
       }}
     >
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
-        <a href="#top" className="text-sm font-semibold tracking-tight">
+        <Link href="/" className="text-sm font-semibold tracking-tight">
           Yuna&nbsp;Kang
-          <span className="text-accent">.</span>
-        </a>
+          <span className="text-foreground">.</span>
+        </Link>
         <ul className="flex items-center gap-7">
           {links.map((l) => (
             <li key={l.href}>
-              <a
+              <Link
                 href={l.href}
                 className="label hover:text-foreground transition-colors"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

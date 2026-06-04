@@ -1,15 +1,13 @@
 import Hero from "@/components/sections/Hero";
-import Work from "@/components/sections/Work";
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
+import ProjectHub from "@/components/sections/ProjectHub";
 
+// 랜딩은 허브 역할만 — Hero + 프로젝트 대표 썸네일.
+// Works / About / Contact 는 각각 /works, /about, /contact 개별 페이지.
 export default function Home() {
   return (
     <main className="flex-1">
       <Hero />
-      <Work />
-      <About />
-      <Contact />
+      <ProjectHub />
     </main>
   );
 }
