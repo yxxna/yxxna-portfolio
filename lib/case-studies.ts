@@ -34,6 +34,7 @@ export type CaseStudy = {
   titleLines?: string[]; // 헤더 표시용 줄 단위 제목(줄마다 박스 리빌 스태거). 없으면 [title].
   accentWord?: string; // (미사용) 예전 제목 강조 단어
   summary: string;
+  resultLink?: { url: string; label?: string }; // 결과물(라이브·플러그인 등) 링크. 있으면 헤더에 버튼 노출, 없으면 안 보임.
   meta: { k: string; v: string }[];
   heroImage?: CaseImage;
   sections: CaseSection[];
@@ -275,6 +276,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     titleLines: ["Overrify — 핸드오프 병목을 없앤", "Figma 플러그인"],
     summary:
       "지정한 스타일·배리어블 값이 핸드오프에서 조용히 어긋나며 개발이 막혔다. 인스턴스가 어디에 쓰였는지, 어떤 오버라이드가 숨어 있는지를 즉시 추적·복원하는 Figma 플러그인으로 병목 자체를 없앤 과정.",
+    resultLink: {
+      url: "https://www.figma.com/community/plugin/1638795703015239476",
+      label: "Figma 플러그인 보기",
+    },
     meta: [
       { k: "기여도", v: "기획 · 플러그인 개발 · 디버깅 100%" },
       { k: "유형", v: "개인 프로젝트 (100%)" },

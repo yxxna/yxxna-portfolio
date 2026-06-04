@@ -163,7 +163,8 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
 }
 
 export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
-  const { kicker, title, titleLines, summary, meta, heroImage, sections } = data;
+  const { kicker, title, titleLines, summary, resultLink, meta, heroImage, sections } =
+    data;
 
   return (
     <main className="flex-1 pt-28">
@@ -202,6 +203,21 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
           >
             {summary}
           </motion.p>
+          {resultLink && (
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              href={resultLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="↗"
+              className="mt-10 inline-flex items-center gap-2 rounded-full border border-foreground px-5 py-2.5 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
+            >
+              {resultLink.label ?? "결과물 보기"}
+              <span aria-hidden>↗</span>
+            </motion.a>
+          )}
         </header>
 
         {/* meta */}

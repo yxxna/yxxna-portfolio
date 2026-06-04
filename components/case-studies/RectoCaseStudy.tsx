@@ -230,6 +230,19 @@ export default function RectoCaseStudy() {
             순환논리임을 스스로 발견하고 ‘검증’이 아니라 ‘예측’ 도구로 정직하게
             재포지셔닝한 과정.
           </motion.p>
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            href="https://ab-simulation-yxxnas-projects.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="↗"
+            className="mt-10 inline-flex items-center gap-2 rounded-full border border-foreground px-5 py-2.5 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
+          >
+            결과물 보기
+            <span aria-hidden>↗</span>
+          </motion.a>
         </header>
 
         {/* meta */}
