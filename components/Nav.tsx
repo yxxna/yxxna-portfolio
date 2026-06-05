@@ -5,18 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 
+// 랜딩의 각 섹션으로 가는 앵커. 라우트 이동 없이 스크롤만 한다.
 const links = [
-  { label: "Works", href: "/works" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Works", hash: "#work" },
+  { label: "About", hash: "#about" },
+  { label: "Contact", hash: "#contact" },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  // 현재 경로가 해당 메뉴(또는 그 하위, 예: /works/recto-ab)면 활성
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`);
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -24,6 +23,15 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // 홈에 있으면 라우트 이동 없이 Lenis로 부드럽게 스크롤.
+  // 다른 페이지(케이스스터디 등)면 Link가 "/#hash"로 이동 → 홈 도착 후 SmoothScroll이 해당 섹션으로.
+  const onAnchor = (e: React.MouseEvent, target: string) => {
+    if (isHome) {
+      e.preventDefault();
+      window.__lenis?.scrollTo(target);
+    }
+  };
 
   return (
     <motion.header
@@ -37,21 +45,21 @@ export default function Nav() {
       }}
     >
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
-        <Link href="/" className="text-sm font-semibold tracking-tight">
+        <Link
+          href="/#top"
+          onClick={(e) => onAnchor(e, "#top")}
+          className="text-sm font-semibold tracking-tight"
+        >
           Yuna&nbsp;Kang
           <span className="text-foreground">.</span>
         </Link>
         <ul className="flex items-center gap-7">
           {links.map((l) => (
-            <li key={l.href}>
+            <li key={l.hash}>
               <Link
-                href={l.href}
-                aria-current={isActive(l.href) ? "page" : undefined}
-                className={`label relative transition-colors ${
-                  isActive(l.href)
-                    ? "text-foreground after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:bg-foreground"
-                    : "hover:text-foreground"
-                }`}
+                href={`/${l.hash}`}
+                onClick={(e) => onAnchor(e, l.hash)}
+                className="label relative transition-colors hover:text-foreground"
               >
                 {l.label}
               </Link>

@@ -4,6 +4,14 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
+// Nav 등에서 앵커 클릭 시 부드럽게 스크롤하도록 인스턴스를 전역 노출한다.
+// (window.lenis 는 Lenis 내부가 메타데이터용으로 예약 → 별도 키 사용)
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 /**
  * Lenis 기반 부드러운 스크롤. 페이지 전역에 한 번만 마운트한다.
  *
@@ -21,6 +29,7 @@ export default function SmoothScroll() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
     lenisRef.current = lenis;
+    window.__lenis = lenis;
 
     let rafId = 0;
     function raf(time: number) {
@@ -38,16 +47,25 @@ export default function SmoothScroll() {
       cancelAnimationFrame(rafId);
       lenis.destroy();
       lenisRef.current = null;
+      window.__lenis = undefined;
     };
   }, []);
 
-  // 라우트가 바뀌면 맨 위로 + 새 문서 높이로 한계 재계산
+  // 라우트가 바뀌면 새 문서 높이로 한계 재계산.
+  // "/#work" 처럼 해시를 달고 들어오면 맨 위 대신 해당 섹션으로 이동한다.
   useEffect(() => {
     const lenis = lenisRef.current;
     if (!lenis) return;
-    lenis.scrollTo(0, { immediate: true });
-    // 레이아웃이 그려진 다음 프레임에 재계산
-    const id = requestAnimationFrame(() => lenis.resize());
+    const hash = window.location.hash;
+    const id = requestAnimationFrame(() => {
+      lenis.resize();
+      const target = hash ? document.querySelector(hash) : null;
+      if (target) {
+        lenis.scrollTo(target as HTMLElement, { immediate: true });
+      } else {
+        lenis.scrollTo(0, { immediate: true });
+      }
+    });
     return () => cancelAnimationFrame(id);
   }, [pathname]);
 
