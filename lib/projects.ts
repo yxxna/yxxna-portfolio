@@ -25,7 +25,7 @@ export const projects: Project[] = [
   },
   {
     slug: "economic-weather",
-    title: "경제날씨 · 직관적 경제 지표",
+    title: "경제날씨 · 직관적 경제 지표 개발 프로젝트",
     summary:
       "지수가 아니라 ‘경제 상황’을 보여주기로 했어요. 10년치 데이터로 직접 백테스팅해 검증한 산출식을, 40-50대도 1초에 읽는 날씨로 번역한 프로젝트예요.",
     tags: ["Product", "데이터", "지표 설계"],
@@ -33,7 +33,7 @@ export const projects: Project[] = [
   },
   {
     slug: "loan-compare",
-    title: "대출비교 · 이탈 흐름 개선",
+    title: "대출비교 · 이탈 흐름 개선 프로젝트",
     summary:
       "랜딩 73.56% 이탈, ‘왜’는 데이터에 없었어요. 가설로 공백을 메워 신뢰 랜딩·부결자 리텐션·4050 친화 입력까지 다시 설계한 프로젝트예요.",
     tags: ["Product", "데이터", "가설 검증"],
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   },
   {
     slug: "overrify",
-    title: "Overrify · 핸드오프 병목 제거 플러그인",
+    title: "Overrify · 인스턴스 스타일 오버라이드 탐지 피그마 플러그인 개발",
     summary:
       "지정한 스타일·배리어블이 핸드오프에서 조용히 어긋나며 개발이 막혔어요. 인스턴스 사용처와 숨은 오버라이드를 즉시 추적·복원하는 Figma 플러그인으로 병목을 없앤 과정이에요.",
     tags: ["Figma Plugin", "디자인 시스템", "핸드오프"],
