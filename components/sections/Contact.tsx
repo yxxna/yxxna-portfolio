@@ -28,7 +28,7 @@ export default function Contact() {
               yxxna.design@gmail.com
             </a>
             <a
-              href="#" // TODO: Tistory 블로그 URL
+              href="https://yxxnadaily.tistory.com" 
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="↗"
@@ -37,7 +37,7 @@ export default function Contact() {
               Tistory
             </a>
             <a
-              href="#" // TODO: LinkedIn 프로필 URL
+              href="https://www.linkedin.com/in/yxxna"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="↗"

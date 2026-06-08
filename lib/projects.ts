@@ -35,7 +35,7 @@ export const projects: Project[] = [
     slug: "loan-compare",
     title: "대출비교 · 이탈 흐름 개선",
     summary:
-      "랜딩 53.7% 이탈, ‘왜’는 데이터에 없었다. 가설로 공백을 메워 신뢰 랜딩·부결자 리텐션·4050 친화 입력까지 다시 설계한 프로젝트.",
+      "랜딩 73.56% 이탈, ‘왜’는 데이터에 없었다. 가설로 공백을 메워 신뢰 랜딩·부결자 리텐션·4050 친화 입력까지 다시 설계한 프로젝트.",
     tags: ["Product", "데이터", "가설 검증"],
     href: "/works/loan-compare",
   },
@@ -47,16 +47,18 @@ export const projects: Project[] = [
     tags: ["Figma Plugin", "디자인 시스템", "핸드오프"],
     href: "/works/overrify",
   },
-  // ── 껍데기(준비 중) — 내용은 나중에. href 없으면 리스트에서 "SOON"으로 비활성. ──
   {
     slug: "finance-ad-ui",
     title: "금융광고 UI 개편",
-    summary: "케이스 스터디 준비 중이에요.",
+    summary:
+      "viewport에 가려 안 보이고, 여백이 데드스페이스를 만들고, 누를 거리가 없어 전환이 떨어졌다. 노출·주목·클릭을 다시 설계한 금융광고(DA) UI 개편.",
     tags: ["Product", "금융"],
+    href: "/works/finance-ad-ui",
   },
+  // ── 껍데기(준비 중) — 내용은 나중에. href 없으면 리스트에서 "SOON"으로 비활성. ──
   {
     slug: "pass-money",
-    title: "PASS머니적립 출시",
+    title: "PASS 머니적립 출시",
     summary: "케이스 스터디 준비 중이에요.",
     tags: ["Product", "Fintech"],
   },

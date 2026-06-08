@@ -168,25 +168,6 @@ const meta = [
   { k: "도구", v: "Slack Bot · 픽셀 분석 · z-test" },
 ];
 
-const decisions = [
-  {
-    t: "검증 언어를 예측 언어로 교체",
-    d: "“승리 🎉 / 통계적으로 유의” → “우세 예상 / 시뮬레이션 p값 / 디자인 기반 예측이며 실제 검증 아님”. WINNER → PREDICTED, 신뢰도 → 예측 신뢰도(시뮬레이션).",
-  },
-  {
-    t: "하드코딩된 승자 항목 삭제",
-    d: "30개 요인 중 승자에게 무조건 78점을 주던 ‘전환 구조 차이’ 항목 제거. 변호할 수 없고, 발견되는 순간 신뢰가 즉사하는 코드였다.",
-  },
-  {
-    t: "예측 면책 배너 + 실측 패널 격상",
-    d: "시뮬 결과 상단에 ‘디자인 기반 예측’ 배너. 실측 데이터 패널을 ‘선택 사항’ → ‘✓ 정식 통계 검증’으로 시각적으로 끌어올림.",
-  },
-  {
-    t: "진짜 검증의 언어는 그대로 유지",
-    d: "실측 z-test(analyzeReal)의 ‘유의’ 표현은 손대지 않았다. 그건 정말로 검증이므로 정당하다.",
-  },
-];
-
 export default function RectoCaseStudy() {
   return (
     <main className="flex-1 pt-28">
@@ -262,18 +243,18 @@ export default function RectoCaseStudy() {
               남이 지적하기 전에, 내 결과물의 논리적 허점을 먼저 찾았다.
               <br />
               <span className="text-muted">
-                그리고 제품이 못 하는 것을 우기지 않고 인정하자, 오히려 제품이 더
+                그리고 허점을 덮는 대신 구조로 고치자, 오히려 제품이 더
                 단단해졌다.
               </span>
             </p>
           </Reveal>
         </div>
 
-        {/* 01 문제 */}
+        {/* 01 배경 */}
         <Section
           n="01"
-          kicker="Problem"
-          title="추측으로 굴러가던 UI 의사결정"
+          kicker="Background"
+          title="A/B 테스트를 하고 싶었어요"
           visual={
             <ImagePlaceholder
               hint="기획·디자인·개발 의견이 상충되는 상황 / 추측 기반 의사결정 다이어그램"
@@ -293,29 +274,30 @@ export default function RectoCaseStudy() {
             결국 모두 확신 없는 주장이 됐고, 방향성을 잡아줄 지표가 필요했어요.
           </p>
           <Pull>“확신 없는 주장”들 사이에서, 기준이 될 지표가 필요했다.</Pull>
+          <p className="text-muted">→ 그래서 UI 분석 툴을 만들기로 했어요.</p>
         </Section>
 
-        {/* 02 첫 시도 */}
+        {/* 02 문제 */}
         <Section
           n="02"
-          kicker="First Attempt"
-          title="‘분석요정’, 그리고 헛발질"
+          kicker="Problem"
+          title="입체적인 분석 결과가 안 나왔어요"
           visual={
             <ImagePlaceholder hint="분석요정 슬랙봇 화면 — 이미지 2개 업로드 → 분석 결과" />
           }
         >
           <p>
-            그래서 만들었어요. 처음에는 <strong>분석요정</strong>이라는 대화형
-            분석 툴이었어요. 슬랙 채널에 이미지 2개를 업로드하면, 슬랙봇이 두
-            이미지를 분석해 결과를 텍스트로 알려주는 형태였죠.
+            처음에는 <strong>분석요정</strong>이라는 대화형 분석 툴을 만들었어요.
+            슬랙 채널에 이미지 2개를 업로드하면, 슬랙봇이 두 이미지를 분석해
+            결과를 텍스트로 알려주는 방식이었죠.
           </p>
           <p>
             하지만 봇은 대조군과 실험군의{" "}
             <span className="text-foreground">
               무엇을 봐야 하는지를 인식하지 못했고
             </span>
-            , 결국 헛발질하는 분석만 나왔어요. 여기서 멈추지 않고, 분석 항목을 더
-            섬세하게 조절하고 다양한 항목을 볼 수 있는 툴을 만들기로 결심했어요.
+            , 결국 한 줄짜리 평면적인 분석만 돌려줬어요. 어떤 항목을 더 섬세하게
+            조절하고, 여러 차원을 입체적으로 볼 수 있는 툴이 필요하다고 느꼈어요.
           </p>
           <p className="text-muted">→ 이 결심이 Recto의 출발점이 됩니다.</p>
         </Section>
@@ -324,15 +306,15 @@ export default function RectoCaseStudy() {
         <Section
           n="03"
           kicker="Build"
-          title="예측을 구조화하다"
+          title="AI와 함께 그럴듯한 시뮬레이션 툴을 만들었어요"
           visual={
             <ImagePlaceholder hint="Recto 화면 — 픽셀 분석 · 30개 요인 점수 · 시뮬레이션 결과" />
           }
         >
           <p>
             Recto는 두 디자인의 픽셀을 분석해 예측 CTR을 만들고, 그걸 기반으로
-            시뮬레이션을 돌려 어느 쪽이 우세할지 보여주는 도구로 발전했어요.
-            30개가 넘는 요인을 점수화하고, 통계 검정까지 붙여 “데이터 기반”의
+            시뮬레이션을 돌려 어느 쪽이 우세할지 보여주는 도구로 발전했어요. AI와
+            함께 30개가 넘는 요인을 점수화하고, 통계 검정까지 붙여 “데이터 기반”의
             톤을 갖췄죠.
           </p>
           <p>
@@ -365,56 +347,29 @@ export default function RectoCaseStudy() {
           <Pull>이건 검증이 아니라, 난수 생성기를 검증한 것이었다.</Pull>
         </Section>
 
-        {/* 05 결정 */}
+        {/* 05 해결 */}
         <Section
           n="05"
-          kicker="Decision"
-          title="못 하는 걸 인정하니 더 단단해졌다"
+          kicker="Solution"
+          title="분석 로직의 실효성을 확보했어요"
           visual={<Positioning />}
         >
           <p>
-            가장 쉬운 길은 모른 척하는 거였어요. 화면은 그럴듯했고, 아무도
-            코드까지 열어보진 않았으니까요. 하지만 그건 언젠가 데이터에 밝은
-            사람이 첫 번째로 찌를 지점이었고, 그 순간 제품 전체의 신뢰가 무너질
-            거였어요.
+            “A/B 테스트 검증 결과가 정말 실효성이 있냐”는 의심이 들었어요. 그냥
+            넘기지 않고 코드까지 내려가 점검했더니, 픽셀 분석으로 산출한 예측
+            CTR을 기준으로{" "}
+            <span className="text-foreground">가짜 데이터만 만들어내고</span>{" "}
+            있었어요. 즉, 의미 없는 난수 생성기를 만들었던 거죠.
           </p>
           <p>
-            그래서 불리하지만 정직한 결론을 택했어요.{" "}
-            <span className="text-foreground">
-              실제 트래픽이 없으면 그건 A/B 테스트가 아니다.
-            </span>{" "}
-            그렇다고 버릴 제품은 아니었어요. Recto 안에는 이미 가치 있는 두 도구가
-            들어 있었거든요 — 사전 <strong>예측</strong>과 사후{" "}
-            <strong>검증</strong>. 둘을 분리하고, Recto를 진짜 A/B 테스트를{" "}
-            <em>대체</em>하는 게 아니라 <em>앞뒤를 받쳐주는</em> 도구로
-            재포지셔닝했어요.
+            난수 대신 <span className="text-foreground">가상 퍼널</span>을
+            추가했어요. 시뮬레이션 속 임의 사용자가{" "}
+            <em>유입 → 이탈 → 스크롤 도달 → 주목 → 클릭</em>의 5단계 행동 퍼널을
+            거치도록 설계하고, 영역의 화면 내 위치와 픽셀 주목도(채도·밀도)가
+            단계별 전환율을 좌우해 전체 클릭률이 창발하도록 했어요. 실측으로
+            보증되지 않은 ‘연구’ 기반 가상 시뮬레이션임을 명시하고, 절대 수치가
+            아닌 <strong>A/B 상대 비교</strong>로 정직하게 제시했습니다.
           </p>
-          <Pull>
-            제품의 간판을 우기는 대신, 한계를 인정하고 더 단단한 자리로 옮겼다.
-          </Pull>
-          <p>
-            그 결정을 화면과 코드에 그대로 새겼어요. 특히{" "}
-            <span className="text-foreground">
-              승자에게 무조건 78점을 주던 하드코딩 항목
-            </span>
-            은, 변호할 수 없고 발견되는 순간 신뢰가 즉사하는 코드라 가장 먼저
-            삭제했어요. ‘검증’이라는 단어가 정당한 곳(실측 z-test)에는 그대로
-            두고, 정당하지 않은 곳(시뮬레이션)에서만 걷어냈고요.
-          </p>
-          <p className="label !mt-10">적용한 결정 4가지</p>
-          <ol className="not-prose space-y-5">
-            {decisions.map((d, i) => (
-              <li key={d.t} className="flex gap-5">
-                <span className="font-mono text-foreground">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <p className="font-semibold">{d.t}</p>
-                  <p className="mt-1 text-base text-muted">{d.d}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
         </Section>
 
         {/* 06 회고 */}
@@ -444,10 +399,11 @@ export default function RectoCaseStudy() {
             </li>
             <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
-                한계를 인정하는 게 더 강한 포지션이다.
+                허점은 덮는 게 아니라 구조로 고친다.
               </span>{" "}
-              못 하는 걸 솔직히 인정하고 “앞뒤를 받쳐준다”로 재포지셔닝하자,
-              오히려 데이터에 밝은 청중의 신뢰를 얻었다.
+              난수 생성기를 의미 있는 행동 퍼널로 바꾸자, 같은 화면도 변호할 수
+              있는 예측이 됐다. 대신 ‘연구 기반 시뮬레이션’임을 정직하게 못
+              박았다.
             </li>
             <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
