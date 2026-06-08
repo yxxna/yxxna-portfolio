@@ -464,9 +464,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       { k: "도구", v: "Figma" },
     ],
     heroImage: {
-      src: "/images/pass/v3.png",
-      alt: "PASS 머니적립 현재 메인 화면",
-      ratio: "9 / 16",
+      hint: "PASS 머니적립 현재 메인 화면 (대형 1컷)",
+      ratio: "16 / 9",
     },
     sections: [
       {
