@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import RectoCaseStudy from "@/components/case-studies/RectoCaseStudy";
+import RectoCaseStudy from "./RectoCaseStudy";
 
 export const metadata: Metadata = {
   title: "Recto · A/B 예측 도구 · Yuna Kang",

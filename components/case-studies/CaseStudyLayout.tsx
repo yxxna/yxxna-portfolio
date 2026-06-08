@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import Reveal from "@/components/Reveal";
 import EntryBoxReveal from "@/components/EntryBoxReveal";
-import type { CaseStudy, CaseImage } from "@/lib/case-studies";
+import type { CaseStudy, CaseImage } from "@/lib/case-study-types";
 // public 에셋의 절대경로(/images/...)에 basePath를 붙인다.
 // GitHub Pages 서브경로 배포에서 일반 <img>는 basePath가 자동 적용되지 않기 때문.
 import { withBasePath } from "@/lib/base-path";

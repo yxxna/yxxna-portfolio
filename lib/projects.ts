@@ -1,3 +1,4 @@
+
 /**
  * 케이스 스터디 데이터. 여기만 채우면 Work 섹션이 자동으로 그려진다.
  * 첫 카드(Recto)는 weekly-report의 "순환논리 발견 → 정직한 재포지셔닝" 서사를
@@ -62,5 +63,13 @@ export const projects: Project[] = [
       "자주 개편되는 제품이라 화면이 아니라 ‘판’이 필요했어요. Foundation부터 컴포넌트까지 디자인 시스템을 세웠고, 그 위에서 다시 설계한 개편이 CTR 개선으로 이어진 프로젝트예요.",
     tags: ["디자인 시스템", "Fintech", "Figma"],
     href: "/works/pass-money",
+  },
+  {
+    slug: "SKMT",
+    title: "SKT PASS 마케팅대행 - 프로모션 디자인",
+    summary:
+      "SKT PASS의 서비스를 소개하는 프로모션 이벤트 페이지의 디자인을 담당했던 프로젝트예요.",
+    tags: ["프로모션 디자인", "마케팅 디자인", "Figma"],
+    href: "/works/SKMT",
   },
 ];
