@@ -49,7 +49,7 @@ export default function Contact() {
         </Reveal>
 
         <p className="label mt-24">
-          © {new Date().getFullYear()} Yuna Kang — Designed & built in Seoul
+          © {new Date().getFullYear()} Yuna Kang · Designed & built in Seoul
         </p>
       </div>
     </section>

@@ -28,7 +28,7 @@ function Section({
         <div>
           <Reveal>
             <p className="label mb-4">
-              {n} — {kicker}
+              {n} · {kicker}
             </p>
             <h2 className="pb-1 text-3xl font-semibold leading-[1.2] tracking-tight md:text-4xl">
               {title}
@@ -114,7 +114,7 @@ function CircularLogic() {
       <p className="mt-6 border-t border-line pt-4 text-sm text-muted">
         ②가 ①에서 <span className="text-foreground">내가 정한 CTR</span>을 정답으로
         삼아 샘플링하므로, 표본만 충분하면 z-test는 ①의 결론을 거의 100% “유의”하다고
-        되돌려준다. 실사용자 0명 → <span className="text-foreground">외적 타당성 0</span>.
+        되돌려줘요. 실사용자 0명 → <span className="text-foreground">외적 타당성 0</span>.
       </p>
     </div>
   );
@@ -130,7 +130,7 @@ function Positioning() {
   ];
   return (
     <div className="not-prose rounded-2xl border border-line p-6 md:p-8">
-      <p className="label mb-6">Recto는 A/B 테스트의 앞뒤를 받쳐준다</p>
+      <p className="label mb-6">Recto는 A/B 테스트의 앞뒤를 받쳐줘요</p>
       <div className="space-y-2">
         {cards.map((c, i) => (
           <div key={c.t}>
@@ -198,7 +198,7 @@ export default function RectoCaseStudy() {
             className="max-w-4xl pb-2 text-4xl font-semibold leading-[1.14] tracking-tight sm:text-6xl md:text-7xl"
           >
             <EntryBoxReveal
-              lines={["Recto — 내가 만든 검증을", "의심한 데서 시작된 도구"]}
+              lines={["Recto, 내가 만든 검증을", "의심한 데서 시작된 도구"]}
             />
           </motion.h1>
           <motion.p
@@ -240,11 +240,11 @@ export default function RectoCaseStudy() {
         <div className="py-20 md:py-28">
           <Reveal>
             <p className="text-2xl font-medium leading-snug tracking-tight md:text-3xl">
-              남이 지적하기 전에, 내 결과물의 논리적 허점을 먼저 찾았다.
+              남이 지적하기 전에, 내 결과물의 논리적 허점을 먼저 찾았어요.
               <br />
               <span className="text-muted">
                 그리고 허점을 덮는 대신 구조로 고치자, 오히려 제품이 더
-                단단해졌다.
+                단단해졌어요.
               </span>
             </p>
           </Reveal>
@@ -273,7 +273,7 @@ export default function RectoCaseStudy() {
             예측이 빗나가면 그대로 리소스 낭비로 이어졌어요. 아무리 회의를 해도
             결국 모두 확신 없는 주장이 됐고, 방향성을 잡아줄 지표가 필요했어요.
           </p>
-          <Pull>“확신 없는 주장”들 사이에서, 기준이 될 지표가 필요했다.</Pull>
+          <Pull>“확신 없는 주장”들 사이에서, 기준이 될 지표가 필요했어요.</Pull>
           <p className="text-muted">→ 그래서 UI 분석 툴을 만들기로 했어요.</p>
         </Section>
 
@@ -283,7 +283,7 @@ export default function RectoCaseStudy() {
           kicker="Problem"
           title="입체적인 분석 결과가 안 나왔어요"
           visual={
-            <ImagePlaceholder hint="분석요정 슬랙봇 화면 — 이미지 2개 업로드 → 분석 결과" />
+            <ImagePlaceholder hint="분석요정 슬랙봇 화면, 이미지 2개 업로드 → 분석 결과" />
           }
         >
           <p>
@@ -308,7 +308,7 @@ export default function RectoCaseStudy() {
           kicker="Build"
           title="AI와 함께 그럴듯한 시뮬레이션 툴을 만들었어요"
           visual={
-            <ImagePlaceholder hint="Recto 화면 — 픽셀 분석 · 30개 요인 점수 · 시뮬레이션 결과" />
+            <ImagePlaceholder hint="Recto 화면, 픽셀 분석 · 30개 요인 점수 · 시뮬레이션 결과" />
           }
         >
           <p>
@@ -327,12 +327,12 @@ export default function RectoCaseStudy() {
         <Section
           n="04"
           kicker="Turning Point"
-          title="내 검증을 의심하다"
+          title="내 검증을 의심했어요"
           visual={<CircularLogic />}
         >
           <p>
             “A/B 테스트 검증 결과가 정말 실효성이 있냐”는 의심이 들었어요. 그냥
-            넘기지 않고 코드까지 내려가 점검했더니 —{" "}
+            넘기지 않고 코드까지 내려가 점검했더니,{" "}
             <span className="text-foreground">
               시뮬레이션 경로 자체가 순환논리
             </span>
@@ -344,7 +344,7 @@ export default function RectoCaseStudy() {
             점이었어요. 그러니 표본만 키우면 검정은 내 가정을 거의 100% “유의”하다고
             되돌려줬죠. 실사용자는 0명이고요.
           </p>
-          <Pull>이건 검증이 아니라, 난수 생성기를 검증한 것이었다.</Pull>
+          <Pull>이건 검증이 아니라, 난수 생성기를 검증한 것이었어요.</Pull>
         </Section>
 
         {/* 05 해결 */}
@@ -392,25 +392,25 @@ export default function RectoCaseStudy() {
           <ul className="not-prose space-y-4">
             <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
-                예측에 검증의 언어를 빌려 쓰지 않는다.
+                예측에 검증의 언어를 빌려 쓰지 않아요.
               </span>{" "}
-              입력으로 만든 데이터를 같은 입력으로 검증하는 건 순환이다. ‘우세
-              예상’과 ‘유의함’은 다른 단어다.
+              입력으로 만든 데이터를 같은 입력으로 검증하는 건 순환이에요. ‘우세
+              예상’과 ‘유의함’은 다른 단어예요.
             </li>
             <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
-                허점은 덮는 게 아니라 구조로 고친다.
+                허점은 덮는 게 아니라 구조로 고쳐요.
               </span>{" "}
               난수 생성기를 의미 있는 행동 퍼널로 바꾸자, 같은 화면도 변호할 수
-              있는 예측이 됐다. 대신 ‘연구 기반 시뮬레이션’임을 정직하게 못
-              박았다.
+              있는 예측이 됐어요. 대신 ‘연구 기반 시뮬레이션’임을 정직하게 못
+              박았어요.
             </li>
             <li className="border-l-2 border-foreground pl-5">
               <span className="font-medium text-foreground">
-                가장 날카로운 검증은 스스로 거는 검증이다.
+                가장 날카로운 검증은 스스로 거는 검증이에요.
               </span>{" "}
               남이 지적하기 전에 내 결과물의 허점을 먼저 찾는 근육이, 이번에
-              제품을 살렸다.
+              제품을 살렸어요.
             </li>
           </ul>
           <Pull>
@@ -418,7 +418,7 @@ export default function RectoCaseStudy() {
           </Pull>
           <p className="text-muted">
             다음 과제는 이 자기검증을 <span className="text-foreground">습관</span>
-            으로 만드는 것 — 빠르게 만든 직후 한 번은 반드시 스스로 점검하는
+            으로 만드는 것, 빠르게 만든 직후 한 번은 반드시 스스로 점검하는
             루틴으로. 약점을 의지가 아니라 구조로 메우는 방식, 그게 이번에 가장
             크게 배운 점이에요.
           </p>

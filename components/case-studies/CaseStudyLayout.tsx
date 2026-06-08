@@ -62,7 +62,7 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
       <section className="border-t border-line py-20 md:py-28">
         <Reveal>
           <p className="label mb-4">
-            {n} — {kicker}
+            {n} · {kicker}
           </p>
           {title && (
             <h2 className="max-w-3xl pb-1 text-3xl font-semibold leading-[1.2] tracking-tight md:text-5xl">
@@ -105,7 +105,7 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
       <section className="border-t border-line py-16 md:py-24">
         <Reveal>
           <p className="label mb-6">
-            {n} — {kicker}
+            {n} · {kicker}
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -126,7 +126,7 @@ function Section({ section }: { section: CaseStudy["sections"][number] }) {
         <div>
           <Reveal>
             <p className="label mb-4">
-              {n} — {kicker}
+              {n} · {kicker}
             </p>
             {title && (
               <h2 className="pb-1 text-3xl font-semibold leading-[1.2] tracking-tight md:text-4xl">

@@ -16,7 +16,7 @@ export async function generateMetadata({
   const data = caseStudies[slug];
   if (!data) return {};
   return {
-    title: `${data.title} — Yuna Kang`,
+    title: `${data.title} · Yuna Kang`,
     description: data.summary,
   };
 }
