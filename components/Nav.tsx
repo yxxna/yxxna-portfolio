@@ -24,12 +24,14 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // 홈에 있으면 라우트 이동 없이 Lenis로 부드럽게 스크롤.
-  // 다른 페이지(케이스스터디 등)면 Link가 "/#hash"로 이동 → 홈 도착 후 SmoothScroll이 해당 섹션으로.
+  // 홈에 있으면 라우트 이동 없이 해당 섹션으로 네이티브 스크롤.
+  // 다른 페이지(케이스스터디 등)면 Link가 "/#hash"로 이동 → 홈 도착 후 브라우저가 해당 섹션으로.
   const onAnchor = (e: React.MouseEvent, target: string) => {
     if (isHome) {
       e.preventDefault();
-      window.__lenis?.scrollTo(target);
+      document
+        .querySelector(target)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 

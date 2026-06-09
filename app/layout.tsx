@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 
@@ -31,7 +30,6 @@ export default function RootLayout({
       </head>
       <body className="custom-cursor min-h-screen flex flex-col">
         <Cursor />
-        <SmoothScroll />
         <Nav />
         {children}
       </body>
