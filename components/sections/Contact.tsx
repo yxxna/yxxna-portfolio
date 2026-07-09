@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 export default function Contact() {
   return (
     <section id="contact" className="border-t border-line py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <Reveal>
           <p className="label mb-6">Contact</p>
           <a

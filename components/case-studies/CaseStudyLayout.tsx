@@ -168,7 +168,7 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
 
   return (
     <main className="flex-1 pt-28">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <Link
           href="/works"
           data-cursor="BACK"

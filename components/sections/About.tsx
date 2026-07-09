@@ -23,7 +23,7 @@ const strengths = [
 export default function About() {
   return (
     <section id="about" className="py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         {/* intro */}
         <Reveal>
           <p className="label mb-8">About</p>

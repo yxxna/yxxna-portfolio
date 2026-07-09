@@ -12,7 +12,7 @@ import { projects } from "@/lib/projects";
  */
 export default function ProjectHub() {
   return (
-    <section id="work" className="mx-auto max-w-[1400px] px-6 pb-28 md:px-10 md:pb-40">
+    <section id="work" className="mx-auto max-w-[1600px] px-6 pb-28 md:px-10 md:pb-40">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <Reveal key={p.slug} delay={i * 0.06}>

@@ -23,7 +23,7 @@ function Section({
 }) {
   return (
     <section className="border-t border-line py-20 md:py-28">
-      <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16">
+      <div className="grid items-start gap-12 md:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] md:gap-20">
         {/* 왼쪽: 텍스트만 */}
         <div>
           <Reveal>
@@ -165,13 +165,13 @@ const meta = [
   { k: "역할", v: "기획 · 제품 디자인 · 프론트엔드 100%" },
   { k: "기간", v: "2026.05" },
   { k: "분야", v: "A/B 테스트 · 의사결정 도구" },
-  { k: "도구", v: "Slack Bot · 픽셀 분석 · z-test" },
+  { k: "도구", v: "Slack Bot · Claude Code" },
 ];
 
 export default function RectoCaseStudy() {
   return (
     <main className="flex-1 pt-28">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         {/* back */}
         <Link
           href="/works"
