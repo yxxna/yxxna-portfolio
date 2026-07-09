@@ -35,6 +35,9 @@ export default function Nav() {
     }
   };
 
+  // 홈 히어로(컬러 그라데이션) 위에 떠 있는 동안은 텍스트를 흰색으로.
+  const onHero = isHome && !scrolled;
+
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
@@ -44,16 +47,17 @@ export default function Nav() {
       style={{
         backgroundColor: scrolled ? "rgba(250,250,250,0.7)" : "transparent",
         backdropFilter: scrolled ? "blur(10px)" : "none",
+        color: onHero ? "#fff" : undefined,
       }}
     >
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10">
+      <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-10">
         <Link
           href="/#top"
           onClick={(e) => onAnchor(e, "#top")}
           className="text-sm font-semibold tracking-tight"
         >
           Yuna&nbsp;Kang
-          <span className="text-foreground">.</span>
+          <span>.</span>
         </Link>
         <ul className="flex items-center gap-7">
           {links.map((l) => (
@@ -62,6 +66,7 @@ export default function Nav() {
                 href={`/${l.hash}`}
                 onClick={(e) => onAnchor(e, l.hash)}
                 className="label relative transition-colors hover:text-foreground"
+                style={{ color: onHero ? "rgba(255,255,255,0.85)" : undefined }}
               >
                 {l.label}
               </Link>

@@ -122,6 +122,33 @@ body {
   }
 }
 
+/* 스크롤 진입 시퀀스 애니메이션 — Reveal.tsx의 IntersectionObserver가 재생을 트리거.
+   기본은 paused(0% 프레임에 멈춰 숨김), 뷰포트에 들어오면 .animate로 running. */
+@keyframes animationIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+.animate-on-scroll {
+  animation: animationIn 0.8s ease-out both;
+  animation-play-state: paused !important;
+}
+.animate-on-scroll.animate {
+  animation-play-state: running !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    animation: none !important;
+  }
+}
+
 ::selection {
   background: var(--accent);
   color: #0a0a0b;
