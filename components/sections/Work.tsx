@@ -36,8 +36,8 @@ function Card({ p, i, clone = false }: { p: Project; i: number; clone?: boolean 
       data-cursor="VIEW"
       tabIndex={clone ? -1 : undefined}
       aria-hidden={clone || undefined}
-      /* 호버 확대분(폭×0.08/2)만큼 mx를 벌려 이웃과의 간격 24px을 그대로 유지 */
-      className="group relative block w-[330px] shrink-0 self-center overflow-hidden transition-[transform,margin] duration-300 ease-out hover:z-10 hover:mx-[13px] hover:scale-[1.08] md:w-[660px] md:hover:mx-[26px]"
+      /* 호버 확대는 globals.css의 #works-strip 규칙 — 전부 transform이라 리플로우 없음 */
+      className="group relative block w-[330px] shrink-0 self-center overflow-hidden md:w-[660px]"
       style={{
         // 높이·내용 투명도는 rAF 루프가 스크롤 진행도에 맞춰 직접 스크럽한다
         height: `${LINE_H}px`,

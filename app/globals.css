@@ -93,6 +93,33 @@ body {
   }
 }
 
+/* Works 마퀴 카드 호버 확대 — margin이 아니라 전부 transform이라 리플로우 없이
+   매끄럽다. 카드는 왼쪽 기준으로 커지고(왼쪽 간격 자동 유지), 커진 폭만큼
+   뒤 카드들(같은 copy + 다음 copy)을 translateX로 밀어 오른쪽 간격도 유지. */
+#works-strip a {
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#works-strip a:hover {
+  z-index: 10;
+  transform: scale(1.08);
+}
+#works-strip a:hover ~ a,
+#works-strip div:has(a:hover) ~ div a {
+  transform: translateX(26.4px); /* 330px × 0.08 */
+}
+@media (min-width: 768px) {
+  #works-strip a:hover ~ a,
+  #works-strip div:has(a:hover) ~ div a {
+    transform: translateX(52.8px); /* 660px × 0.08 */
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #works-strip a {
+    transition: none;
+  }
+}
+
 /* 리스트 아이템 화살표 — 평소엔 그냥 보이고, 부모(.group) 호버 시 왼→오로 흐른다.
    오른쪽으로 빠져나가며(페이드) 보이지 않는 사이 왼쪽으로 점프 → 다시 들어와 반복. */
 @keyframes arrow-travel {
