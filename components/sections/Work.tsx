@@ -36,7 +36,7 @@ function Card({ p, i, clone = false }: { p: Project; i: number; clone?: boolean 
       data-cursor="VIEW"
       tabIndex={clone ? -1 : undefined}
       aria-hidden={clone || undefined}
-      className="group relative block w-[330px] shrink-0 self-center overflow-hidden transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.04] md:w-[660px]"
+      className="group relative block w-[330px] shrink-0 self-center overflow-hidden transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.08] md:w-[660px]"
       style={{
         // 높이·내용 투명도는 rAF 루프가 스크롤 진행도에 맞춰 직접 스크럽한다
         height: `${LINE_H}px`,
@@ -230,7 +230,8 @@ export default function Work() {
         <div
           ref={viewportRef}
           id="works-strip"
-          className="overflow-hidden"
+          /* py-5: 호버 확대분(440×0.08/2≈18px)이 overflow-hidden에 잘리지 않게 */
+          className="-my-5 overflow-hidden py-5"
           onPointerEnter={() => {
             st.current.hover = true;
           }}
