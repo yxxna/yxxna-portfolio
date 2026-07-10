@@ -36,7 +36,7 @@ function Card({ p, i, clone = false }: { p: Project; i: number; clone?: boolean 
       data-cursor="VIEW"
       tabIndex={clone ? -1 : undefined}
       aria-hidden={clone || undefined}
-      className="group relative block w-[330px] shrink-0 self-center overflow-hidden md:w-[660px]"
+      className="group relative block w-[330px] shrink-0 self-center overflow-hidden transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.04] md:w-[660px]"
       style={{
         // 높이·내용 투명도는 rAF 루프가 스크롤 진행도에 맞춰 직접 스크럽한다
         height: `${LINE_H}px`,
