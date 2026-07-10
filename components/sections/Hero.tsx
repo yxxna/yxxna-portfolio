@@ -76,6 +76,7 @@ const FADE_LEN = 0.2; // 착지 후 0.2vh 동안 페이드아웃
 
 function GradientField() {
   const ref = useRef<HTMLDivElement>(null);
+  const deco = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -87,6 +88,11 @@ function GradientField() {
       const vh = window.innerHeight;
       const y = window.scrollY;
       const pr = Math.min(Math.max(y / (vh * SQUASH_END), 0), 1);
+      // 찌그러짐이 보이는 장식(실루엣·대각선 색면)은 눌리기 전에 먼저 지운다
+      if (deco.current)
+        deco.current.style.opacity = String(1 - Math.min(pr / 0.4, 1));
+      // smoothstep — 눌림 시작·끝을 부드럽게 (기계적 선형 스크럽 방지)
+      const pe = pr * pr * (3 - 2 * pr);
       // 착지 지점: Works 접힌 선의 문서상 위치 (히어로 하단 → 선 하단까지의 거리)
       const sec = el.parentElement!;
       const strip = document.getElementById("works-strip");
@@ -97,8 +103,8 @@ function GradientField() {
         tyMax = sr.top + y + sr.height / 2 + LINE_H / 2 - secBottomDoc;
       }
       const target = LINE_H / el.offsetHeight;
-      el.style.transform = `translateY(${tyMax * pr}px) scaleY(${
-        1 - (1 - target) * pr
+      el.style.transform = `translateY(${tyMax * pe}px) scaleY(${
+        1 - (1 - target) * pe
       })`;
       // 착지 후 카드가 펼쳐지는 동안 사라진다
       const fade = Math.min(
@@ -134,14 +140,17 @@ function GradientField() {
       <div className="absolute inset-y-0 left-[64%] w-[24%] bg-[linear-gradient(180deg,#b085e8,#a76fe3)]" />
       {/* 맨 우측 연핑크 밴드 */}
       <div className="absolute inset-y-0 right-0 w-[12%] bg-[linear-gradient(180deg,#eba3b8,#d98fb3)]" />
-      {/* 좌하단 골드+라임(브랜드 accent 섞음) */}
-      <div className="absolute bottom-0 left-0 h-[40%] w-[42%] bg-[linear-gradient(25deg,color-mix(in_srgb,var(--accent)_40%,#d9a83f),transparent_75%)]" />
-      {/* 우하단 틸 */}
-      <div className="absolute bottom-0 left-[55%] right-0 h-[45%] bg-[linear-gradient(180deg,transparent,#43b9a4_35%,#5fd3bd)]" />
-      {/* 중앙 거대 라운드 실루엣 — 밝은 오버레이로 곡선 경계만 드러남 */}
-      <div className="absolute left-1/2 top-[8%] aspect-square w-[150vmin] -translate-x-1/2 rounded-[38%] bg-white/10" />
-      {/* 상단 살짝 어둡게 눌러 텍스트·Nav 대비 확보 */}
-      <div className="absolute inset-x-0 top-0 h-[30%] bg-[linear-gradient(180deg,rgba(0,0,0,0.14),transparent)]" />
+      {/* 눌리면 찌그러져 보이는 장식층 — 스크럽 전반 40%에서 페이드아웃 */}
+      <div ref={deco} className="absolute inset-0">
+        {/* 좌하단 골드+라임(브랜드 accent 섞음) */}
+        <div className="absolute bottom-0 left-0 h-[40%] w-[42%] bg-[linear-gradient(25deg,color-mix(in_srgb,var(--accent)_40%,#d9a83f),transparent_75%)]" />
+        {/* 우하단 틸 */}
+        <div className="absolute bottom-0 left-[55%] right-0 h-[45%] bg-[linear-gradient(180deg,transparent,#43b9a4_35%,#5fd3bd)]" />
+        {/* 중앙 거대 라운드 실루엣 — 밝은 오버레이로 곡선 경계만 드러남 */}
+        <div className="absolute left-1/2 top-[8%] aspect-square w-[150vmin] -translate-x-1/2 rounded-[38%] bg-white/10" />
+        {/* 상단 살짝 어둡게 눌러 텍스트·Nav 대비 확보 */}
+        <div className="absolute inset-x-0 top-0 h-[30%] bg-[linear-gradient(180deg,rgba(0,0,0,0.14),transparent)]" />
+      </div>
     </div>
   );
 }
