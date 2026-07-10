@@ -14,37 +14,47 @@ import { projects, type Project } from "@/lib/projects";
  * 카드 호버 시 정지, 클릭 시 상세 이동, 좌우 화살표로 빠르게 탐색.
  * 색은 히어로 그라데이션 색면과 같은 팔레트를 순환해 통일감을 맞춘다.
  */
+/* 색은 "선" 상태에서만 보인다 — 카드로 다 펼쳐지면 흰 면 + 보더로 통일되고
+   컬러는 썸네일이 담당한다. 프로젝트가 늘어도 카드 색을 고를 필요가 없다. */
 const palette = [
-  { c: "#ea6a20", fg: "#ffffff" }, // 오렌지
-  { c: "#db66a2", fg: "#ffffff" }, // 핑크
-  { c: "#a76fe3", fg: "#ffffff" }, // 퍼플
-  { c: "#43b9a4", fg: "#ffffff" }, // 틸
-  { c: "#c3cc3d", fg: "#101014" }, // 라임(accent 계열)
-  { c: "#8a2408", fg: "#ffffff" }, // 딥레드
-  { c: "#eba3b8", fg: "#101014" }, // 연핑크
+  "#ea6a20", // 오렌지
+  "#db66a2", // 핑크
+  "#a76fe3", // 퍼플
+  "#43b9a4", // 틸
+  "#c3cc3d", // 라임(accent 계열)
+  "#8a2408", // 딥레드
+  "#eba3b8", // 연핑크
 ];
 
 const LINE_H = 32; // 접힌 무지개 선의 두께(px) — 히어로 배경이 압축돼 닿는 선과 같은 두께
 
 function Card({ p, i, clone = false }: { p: Project; i: number; clone?: boolean }) {
-  const pal = palette[i % palette.length];
+  const c = palette[i % palette.length];
   return (
     <Link
       href={p.href ?? "#work"}
       data-cursor="VIEW"
       tabIndex={clone ? -1 : undefined}
       aria-hidden={clone || undefined}
-      className="group block w-[330px] shrink-0 self-center overflow-hidden md:w-[660px]"
+      className="group relative block w-[330px] shrink-0 self-center overflow-hidden md:w-[660px]"
       style={{
         // 높이·내용 투명도는 rAF 루프가 스크롤 진행도에 맞춰 직접 스크럽한다
         height: `${LINE_H}px`,
-        background: `linear-gradient(165deg, ${pal.c}, color-mix(in srgb, ${pal.c} 55%, #ffffff))`,
-        color: pal.fg,
+        background: `linear-gradient(165deg, ${c}, color-mix(in srgb, ${c} 55%, #ffffff))`,
       }}
     >
-      <div className="flex h-full flex-col p-4 md:p-5" style={{ opacity: 0 }}>
+      {/* 펼침 후반에 색 위로 덮이는 흰 면 + 보더 — 내용과 같은 진행도로 페이드인 */}
+      <div
+        aria-hidden
+        className="absolute inset-0 border border-line bg-white"
+        style={{ opacity: 0 }}
+      />
+      <div
+        className="relative flex h-full flex-col p-4 md:p-5"
+        style={{ opacity: 0 }}
+      >
         {/* 썸네일 영역 — thumb이 생기면 이미지, 없으면 번호 플레이스홀더 */}
-        <div className="relative flex-1 overflow-hidden bg-white/25">
+        <div className="relative flex-1 overflow-hidden bg-black/[0.04]">
           {p.thumb ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -162,11 +172,12 @@ export default function Work() {
           );
           const e = pi * pi * (3 - 2 * pi); // smoothstep — 스크롤 구간에 고르게 분배
           el.style.height = `${LINE_H + (cardH - LINE_H) * e}px`;
-          const content = el.firstElementChild as HTMLElement | null;
-          if (content)
-            content.style.opacity = String(
-              Math.min(Math.max((pi - 0.55) / 0.45, 0), 1)
-            );
+          // 흰 면(보더 포함)과 내용을 같은 진행도로 페이드인 — 색은 선·펼침 중에만
+          const co = String(Math.min(Math.max((pi - 0.55) / 0.45, 0), 1));
+          const veil = el.firstElementChild as HTMLElement | null;
+          const content = el.lastElementChild as HTMLElement | null;
+          if (veil) veil.style.opacity = co;
+          if (content) content.style.opacity = co;
         });
       }
 
